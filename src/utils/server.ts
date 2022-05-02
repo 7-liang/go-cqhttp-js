@@ -81,7 +81,7 @@ export default class Server extends EventEmitter {
         */
 
         console.log('---------------------------------------------------------------------------------------------')
-        console.log(` Server is running at http://localhost:${this.express.get('port')} in ${this.express.get('env')} node.`)
+        console.log(` 反向 HTTP API 服务器已运行，http://localhost:${this.express.get('port')}`)
         console.log('---------------------------------------------------------------------------------------------')
     }
 }

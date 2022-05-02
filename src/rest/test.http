@@ -1,0 +1,61 @@
+@baseurl = http://127.0.0.1:1234
+
+### 获取消息
+get {{baseurl}}/get_msg
+    ?message_id=-296912625
+
+### 获取图片
+get {{baseurl}}/get_image
+    ?file=7806e5db3a6d5929e72093cd8a0e8b93.image
+
+### 群组踢人
+get {{baseurl}}/set_group_kick
+    ?group_id=15027597
+    &user_id=987439
+
+### 重启 go-cqhttp
+get {{baseurl}}/set_restart
+
+### 获取群系统消息
+get {{baseurl}}/get_group_system_msg
+
+### 获取 go-cqhttp 运行状态
+get {{baseurl}}/get_status
+
+### 发送私聊
+get {{baseurl}}/send_private_msg
+    ?user_id=987439
+    &message=hi
+
+### 获取登陆号信息
+get {{baseurl}}/get_login_info
+
+### 获取陌生人信息
+get {{baseurl}}/get_stranger_info
+    ?user_id=9874393
+
+### 获取好友列表
+get {{baseurl}}/get_friend_list
+
+### 获取群系统消息
+get {{baseurl}}/get_group_system_msg
+
+### 获取群根目录文件列表
+get {{baseurl}}/get_group_root_files
+    ?group_id=15027597
+
+### 获取群文件系统信息
+get {{baseurl}}/get_group_file_system_info
+    ?group_id=15027597
+
+### 获取群子目录文件列表
+get {{baseurl}}/get_group_files_by_folder
+    ?group_id=15027597
+    &folder_id=/5ca09c25-978a-4cd5-a087-ffa8d25b926d
+
+### 获取状态
+get {{baseurl}}/get_status
+
+### 获取群消息历史记录
+get {{baseurl}}/get_group_msg_history
+    ?group_id=15027597
