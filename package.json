@@ -1,6 +1,6 @@
 {
   "name": "go-cqhttp-js",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "QQ bot by go-cqhttp, Powered by NodeJs",
   "main": "dist/index.js",
   "source": "src/index.ts",
