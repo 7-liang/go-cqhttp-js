@@ -258,7 +258,7 @@ export default class Bot {
      * @param {Message} opts.message Message 消息实例
      * @returns {Promise<SendMsgResult>} message_id 
      */
-    sendMessage (opts: { user_id: number, group_id: number, temp?: boolean, message: Message }) {
+    sendMessage (opts: { user_id?: number, group_id?: number, temp?: boolean, message: Message }) {
         let { temp, user_id, group_id, message } = opts
         if (!user_id && !group_id) throw new Error(`sendMessage: 缺少必要的 ${getInvalidParams({ user_id, group_id })} 参数。`)
         if (!message) throw new Error(`sendMessage: 缺少必要的 ${getInvalidParams({ message })} 参数。`)
