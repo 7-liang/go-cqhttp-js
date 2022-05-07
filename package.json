@@ -1,7 +1,7 @@
 {
   "name": "go-cqhttp-js",
-  "version": "0.0.5",
-  "description": "QQ bot by go-cqhttp, Powered by NodeJs",
+  "version": "0.0.7",
+  "description": "基于 go-cqhttp，使用 NodeJs 实现的 QQ Bot 框架，参考自 Mirai-js 。",
   "main": "dist/index.js",
   "source": "src/index.ts",
   "scripts": {
@@ -36,5 +36,8 @@
     "api",
     "http",
     "robot"
+  ],
+  "files": [
+    "dist"
   ]
 }

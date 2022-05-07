@@ -6,7 +6,7 @@
 bot.on('FriendMessage', new Middleware().friendFilter([ 12345 ])
     .done(data => {
         bot.sendMessage({
-            user_id: data.sender.id,
+            user_id: data.user_id,
             message: new Message().addText('hello world!'),
         })
     })
