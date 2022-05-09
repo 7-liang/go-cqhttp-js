@@ -13,3 +13,7 @@ bot.on('FriendMessage', new Middleware().friendFilter([ 12345 ])
 );
 ```
 
+
+## 开发文档
+
+- Vercel -> [https://go-cqhttp-js.vercel.app](https://go-cqhttp-js.vercel.app)

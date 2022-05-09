@@ -10,7 +10,7 @@ go-cqhttp-js 使用 express 编写了内置的 http api 服务端，使用前需
 
 ```yml
 heartbeat:                              # 心跳包设置
-  interval: -1                          # go-cqhttp-js 使用反向 http，无需开启 心跳包功能
+  interval: -1                          # go-cqhttp-js 使用反向 http，可不开启 心跳包功能
 
 servers:
   - http:                               # http 通信设置
