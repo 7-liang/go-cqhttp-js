@@ -2,9 +2,9 @@
 
 go-cqhttp-js 内置反向 http api 服务，用于接收来自 go-cqhttp 的事件通知，用户可通过 bot.on 方法监听不同的事件，并进行处理
 
-go-cqhttp-js 封装了 go-cqhttp 大部分事件，并编写了相应的数据声明
+go-cqhttp-js 封装了 go-cqhttp 大部分事件，并提供了相应的数据声明
 
-1. 私聊消息
+## 私聊消息
 
 事件名：PrivateMessage
 
@@ -18,7 +18,7 @@ bot.on('PrivateMessage', (data: PrivateMessageData) => {
 })
 ```
 
-2. 群聊消息
+## 群聊消息
 
 事件名：GroupMessage
 

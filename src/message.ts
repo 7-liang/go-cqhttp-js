@@ -337,7 +337,7 @@ export default class Message {
 
     // 将消息解构为 消息链对象
     parse (message: string) {
-        if (!message.length) return this.message_chain
+        if (!message || !message.length) return this.message_chain
 
         // 分割字符串为数组
         message.replace(/\[/g, '&&').replace(/\]/g, '&&').split('&&').forEach(item => {
