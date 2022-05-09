@@ -2,6 +2,12 @@
 
 go-cqhttp-js 依赖 go-cqhttp，在使用前需确认 go-cqhttp 能正常运行。
 
+## 安装 go-cqhttp-js
+
+```
+npm i go-cqhttp-js
+```
+
 ## 配置 go-cqhttp
 
 go-cqhttp-js 使用 express 编写了内置的 http api 服务端，使用前需开启 go-cqhttp 的反向 http 通信功能
