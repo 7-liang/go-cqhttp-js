@@ -10,6 +10,8 @@
 ## 使用
 
 ```js
+import { Middleware } from 'go-cqhttp-js'
+
 bot.on('GroupMessage', new Middleware()
     .groupFilter([ 12345 ])
     .textProcessor()
