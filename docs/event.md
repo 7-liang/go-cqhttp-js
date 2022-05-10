@@ -4,7 +4,8 @@ go-cqhttp-js 内置反向 http api 服务，用于接收来自 go-cqhttp 的事�
 
 go-cqhttp-js 封装了 go-cqhttp 大部分事件，并提供了相应的数据声明
 
-***
+
+## 私聊消息
 
 ### PrivateMessage
 
@@ -46,7 +47,7 @@ bot.on('PrivateMessage', (data: PrivateMessageData) => {
 })
 ```
 
-***
+## 群消息
 
 ### GroupMessage
 
@@ -98,7 +99,7 @@ bot.on('GroupMessage', (data: GroupMessageData) => {
 })
 ```
 
-***
+## 群文件
 
 ### GroupUploadNotice
 
@@ -135,8 +136,8 @@ bot.on('GroupUploadNotice', (data: GroupUploadNoticeData) => {
 })
 ```
 
+## 管理员变动
 
-***
 
 ### GroupAdminNotice
 
@@ -155,6 +156,30 @@ bot.on('GroupUploadNotice', (data: GroupUploadNoticeData) => {
     sub_type: string        // 事件子类型，set 设置管理员，unset 取消管理员
     group_id: number        // 群号
     user_id: number         // 管理员 QQ
+}
+```
+
+## 群成员变动
+
+### GroupRequest
+
+`加群请求 / 邀请`
+
+#### 事件数据
+
+`GroupRequestData`
+
+```js
+{
+    time: number            // 事件发生时间戳
+    self_id: number         // bot QQ
+    post_type: string       // 上报类型 request
+    request_type: string    // 请求类型 group
+    sub_type: string        // 请求子类型，add 加群请求，invite 邀请登录号入群
+    group_id: number        // 群号
+    user_id: number         // 发送请求的 QQ
+    comment: string         // 验证信息
+    flag: string            // 请求 flag, bot.setGroupRequest 需要
 }
 ```
 
@@ -204,7 +229,7 @@ bot.on('GroupUploadNotice', (data: GroupUploadNoticeData) => {
 }
 ```
 
-***
+## 禁言
 
 ### GroupBanNotice
 
@@ -228,6 +253,28 @@ bot.on('GroupUploadNotice', (data: GroupUploadNoticeData) => {
 }
 ```
 
+## 好友变动
+
+### FriendRequest
+
+`加好友请求`
+
+#### 事件数据
+
+`FriendRequestData`
+
+```js
+{
+    time: number            // 事件发生时间戳
+    self_id: number         // bot QQ
+    post_type: string       // 上报类型 request
+    request_type: string    // 请求类型 friend
+    user_id: number         // 请求人 QQ
+    comment: string         // 验证信息
+    flag: string            // 请求 flag, 调用处理 bot.setFriendRequest 需要
+}
+```
+
 ***
 
 ### FriendAddNotice
@@ -248,7 +295,7 @@ bot.on('GroupUploadNotice', (data: GroupUploadNoticeData) => {
 }
 ```
 
-***
+## 消息撤回
 
 ### GroupRecallNotice
 
@@ -292,7 +339,7 @@ bot.on('GroupUploadNotice', (data: GroupUploadNoticeData) => {
 }
 ```
 
-***
+## 戳一戳
 
 ### FriendPokeNotice
 
@@ -336,7 +383,7 @@ bot.on('GroupUploadNotice', (data: GroupUploadNoticeData) => {
 }
 ```
 
-***
+## 红包王
 
 ### LuckyKingNotice
 
@@ -357,7 +404,7 @@ bot.on('GroupUploadNotice', (data: GroupUploadNoticeData) => {
 }
 ```
 
-***
+## 群荣誉
 
 ### GroupHonorNotice
 
@@ -378,7 +425,7 @@ bot.on('GroupUploadNotice', (data: GroupUploadNoticeData) => {
 }
 ```
 
-***
+## 成员名片更新
 
 ### GroupCardNotice
 
@@ -399,7 +446,7 @@ bot.on('GroupUploadNotice', (data: GroupUploadNoticeData) => {
 }
 ```
 
-***
+## 离线文件
 
 ### OfflineFileNotice
 
@@ -422,53 +469,7 @@ bot.on('GroupUploadNotice', (data: GroupUploadNoticeData) => {
 }
 ```
 
-***
-
-### FriendRequest
-
-`加好友请求`
-
-#### 事件数据
-
-`FriendRequestData`
-
-```js
-{
-    time: number            // 事件发生时间戳
-    self_id: number         // bot QQ
-    post_type: string       // 上报类型 request
-    request_type: string    // 请求类型 friend
-    user_id: number         // 请求人 QQ
-    comment: string         // 验证信息
-    flag: string            // 请求 flag, 调用处理 bot.setFriendRequest 需要
-}
-```
-
-***
-
-### GroupRequest
-
-`加群请求 / 邀请`
-
-#### 事件数据
-
-`GroupRequestData`
-
-```js
-{
-    time: number            // 事件发生时间戳
-    self_id: number         // bot QQ
-    post_type: string       // 上报类型 request
-    request_type: string    // 请求类型 group
-    sub_type: string        // 请求子类型，add 加群请求，invite 邀请登录号入群
-    group_id: number        // 群号
-    user_id: number         // 发送请求的 QQ
-    comment: string         // 验证信息
-    flag: string            // 请求 flag, bot.setGroupRequest 需要
-}
-```
-
-***
+## 客户端
 
 ### ClientStatusNotice
 
@@ -491,7 +492,7 @@ bot.on('GroupUploadNotice', (data: GroupUploadNoticeData) => {
 }
 ```
 
-***
+## 精华消息
 
 ### EssenceNotice
 

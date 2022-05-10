@@ -34,8 +34,10 @@ const bot = new Bot({
 })
 ```
 
+?> `base_url` 为运行 `go-cqhttp` 的服务器地址和端口，可以为远程地址，可与 `go-cqhttp-js` 分处不同服务器运行。
 
-## 成员方法
+
+## 事件处理
 
 ### on
 
@@ -152,7 +154,9 @@ bot.offAll()
 bot.offAll(['PrivateMessage', 'GroupMessage'])
 ```
 
-***
+
+## 消息处理
+
 
 ### sendMessage
 
@@ -271,7 +275,132 @@ bot.on(`PrivateMessage`, data => {
 })
 ```
 
+
+## 好友管理
+
+### setFriendRequest
+
+`处理添加好友请求`
+
+#### 参数
+
+- `opts: object`
+
+```js
+{
+    flag: string            // 好友请求数据的 flag
+    approve?: boolean       // 可选，默认 true 同意，false 拒绝
+    remark?: string         // 可选，通过后的好友备注 
+}
+```
+
+#### 示例
+
+```js
+bot.on('FriendRequest', data => {
+    const { flag } = data
+
+    bot.setFriendRequest({ flag, remark: '小七' })
+})
+```
+
 ***
+
+### getFriendList
+
+`获取好友列表`
+
+#### 参数
+
+无
+
+#### 返回值
+
+`Promise<GetFriendListResult[]>`
+
+```js
+[
+    {
+        user_id: number     // QQ
+        nickname: string    // 昵称
+        remark: string      // 备注
+    }
+]
+```
+
+#### 示例
+
+```js
+bot.getFriendList()
+    .then(data => {
+        data.forEach(item => console.log(item))
+    })
+```
+
+***
+
+### deleteFriend
+
+`删除好友`
+
+#### 参数
+
+- `opts: object`
+
+```js
+{
+    friend_id: number       // 要删除的好友 QQ
+}
+```
+
+#### 示例
+
+```js
+bot.deleteFriend({ friend_id: 54321 })
+```
+
+***
+
+### getStrangerInfo
+
+`获取陌生人信息`
+
+#### 参数
+
+- `opts: object`
+
+```js
+{
+    user_id: number         // 要获取的 QQ
+    no_cache?: boolean      // 可选，默认 false 不使用缓存
+}
+```
+
+#### 返回值
+
+`Promise<GetStrangerInfoResult>`
+
+```js
+{
+    user_id: number         // QQ
+    nickname: string        // 昵称
+    sex: string             // 性别，male 或 female 或 unknown
+    age: number             // 年龄
+    qid: string             // qid ID 身份卡
+    level: number           // 等级
+    login_days: number      // 等级
+}
+```
+
+#### 示例
+
+```js
+bot.getStrangerInfo({ user_id: 54321 })
+    .then(data => console.log(data))
+```
+
+## 群组管理
+
 
 ### memberKick
 
@@ -471,34 +600,6 @@ bot.setMemberTitle({ group_id: 12345, user_id: 54321, special_title: '希望之�
 
 ***
 
-### setFriendRequest
-
-`处理添加好友请求`
-
-#### 参数
-
-- `opts: object`
-
-```js
-{
-    flag: string            // 好友请求数据的 flag
-    approve?: boolean       // 可选，默认 true 同意，false 拒绝
-    remark?: string         // 可选，通过后的好友备注 
-}
-```
-
-#### 示例
-
-```js
-bot.on('FriendRequest', data => {
-    const { flag } = data
-
-    bot.setFriendRequest({ flag, remark: '小七' })
-})
-```
-
-***
-
 ### setMemberJoinRequest
 
 `处理加群请求 / 邀请`
@@ -528,100 +629,6 @@ bot.on('GroupRequest', data => {
 
 ***
 
-### getStrangerInfo
-
-`获取陌生人信息`
-
-#### 参数
-
-- `opts: object`
-
-```js
-{
-    user_id: number         // 要获取的 QQ
-    no_cache?: boolean      // 可选，默认 false 不使用缓存
-}
-```
-
-#### 返回值
-
-`Promise<GetStrangerInfoResult>`
-
-```js
-{
-    user_id: number         // QQ
-    nickname: string        // 昵称
-    sex: string             // 性别，male 或 female 或 unknown
-    age: number             // 年龄
-    qid: string             // qid ID 身份卡
-    level: number           // 等级
-    login_days: number      // 等级
-}
-```
-
-#### 示例
-
-```js
-bot.getStrangerInfo({ user_id: 54321 })
-    .then(data => console.log(data))
-```
-
-***
-
-### getFriendList
-
-`获取好友列表`
-
-#### 参数
-
-无
-
-#### 返回值
-
-`Promise<GetFriendListResult[]>`
-
-```js
-[
-    {
-        user_id: number     // QQ
-        nickname: string    // 昵称
-        remark: string      // 备注
-    }
-]
-```
-
-#### 示例
-
-```js
-bot.getFriendList()
-    .then(data => {
-        data.forEach(item => console.log(item))
-    })
-```
-
-***
-
-### deleteFriend
-
-`删除好友`
-
-#### 参数
-
-- `opts: object`
-
-```js
-{
-    friend_id: number       // 要删除的好友 QQ
-}
-```
-
-#### 示例
-
-```js
-bot.deleteFriend({ friend_id: 54321 })
-```
-
-***
 
 ### getGroupInfo
 
@@ -822,7 +829,9 @@ bot.getHonorInfo({ group_id: 12345, type: 'all' })
     .then(data => console.log(data))
 ```
 
-***
+
+## 其它
+
 
 ### canSendImage
 
