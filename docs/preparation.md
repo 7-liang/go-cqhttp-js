@@ -20,17 +20,16 @@ heartbeat:                              # 心跳包设置
 
 servers:
   - http:                               # http 通信设置
-    host: 127.0.0.1                     # host
-    port: 5700                          # port
-    timeout: 5                          # 反向 http 超时时间
-    long-polling:                       
-      enabled: false
-      max-queue-size: 2000
-    middlewares:                        
-      <<: *default
-    port:                               # 反向 http 设置
-    = url: 'http://127.0.0.1:5701'      # 反向 http 服务器地址
-      secret: ''                        # 验证密钥，无
+      address: 127.0.0.1:5700               # HTTP监听地址
+      timeout: 5                          # 反向 http 超时时间
+      long-polling:                       
+        enabled: false
+        max-queue-size: 2000
+      middlewares:                        
+        <<: *default
+      post:                               # 反向 http 设置
+      - url: 'http://127.0.0.1:5701'      # 反向 http 服务器地址
+        secret: ''                        # 验证密钥，无
 ```
 
 go-cqhttp 与 go-cqhttp-js 可不在同一台服务器运行
